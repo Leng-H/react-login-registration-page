@@ -1,14 +1,21 @@
 import React from "react";
 
-// import Signup from "./components/Signup";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 function App() {
   return (
-    <div className="App">
-      {/* <Signup /> */}
-      <Login />
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          {/* Make Login as the default landing page */}
+          <Route path="/" exact component={Login} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/signup" exact component={Signup} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
