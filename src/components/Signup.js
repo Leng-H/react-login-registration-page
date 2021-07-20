@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import UserPool from "../UserPool";
 
 const Signup = () => {
+  console.log("Signup page is on!");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -18,6 +19,7 @@ const Signup = () => {
   return (
     <div>
       <form onSubmit={onSubmitHandler}>
+        <h2>Sign Up</h2>
         <input
           value={email}
           onChange={(event) => setEmail(event.target.value)}
