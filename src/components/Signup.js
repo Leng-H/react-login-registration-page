@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 import UserPool from "../UserPool";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
-  console.log("Signup page is on!");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,19 +16,48 @@ const Signup = () => {
     });
   };
 
+  // Link to the Login page
+  var login_ = (
+    <Link to="/login" className="link">
+      Login
+    </Link>
+  );
+
   return (
-    <div>
+    <div className="center">
+      <h2>Sign Up</h2>
       <form onSubmit={onSubmitHandler}>
-        <h2>Sign Up</h2>
-        <input
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-        />
-        <input
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-        <button type="submit">SignUp</button>
+        <div className="txt_field">
+          <input
+            type="email"
+            value={email}
+            required
+            placeholder=""
+            onChange={(event) => setEmail(event.target.value)}
+          />
+          <span></span>
+          <label>Email</label>
+        </div>
+        <br />
+
+        <div className="txt_field">
+          <input
+            type="password"
+            value={password}
+            required
+            placeholder=""
+            onChange={(event) => setPassword(event.target.value)}
+          />
+          <span></span>
+          <label>Password</label>
+        </div>
+        <br />
+
+        <div className="spacing">Already have an account? {login_}</div>
+
+        <button type="submit" className="login_btn">
+          SignUp
+        </button>
       </form>
     </div>
   );

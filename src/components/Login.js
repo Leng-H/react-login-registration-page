@@ -26,7 +26,7 @@ const Login = () => {
     user.authenticateUser(authDetails, {
       onSuccess: (data) => {
         console.log("onSuccess:", data);
-        alert("Registered Successfully");
+        alert("Login Successfully");
       },
       onFailure: (err) => {
         console.log("onFailure:", err);
@@ -37,6 +37,13 @@ const Login = () => {
       },
     });
   };
+
+  // Link to the Signup page
+  var signup_ = (
+    <Link to="/signup" className="link">
+      Sign up here
+    </Link>
+  );
 
   return (
     <div className="center">
@@ -69,14 +76,11 @@ const Login = () => {
         </div>
         <br />
 
-        <div className="link">Forgot Password?</div>
+        <div className="spacing">Are you new? {signup_}</div>
 
         <button type="submit" className="login_btn">
           Login
         </button>
-
-        {/* Add link to the Signup page */}
-        <Link to="/signup">Sign Up</Link>
       </form>
     </div>
   );

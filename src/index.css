@@ -85,9 +85,12 @@ form .txt_field {
   width: 100%;
 }
 
+.spacing {
+  margin: -5px 0 20px 5px;
+}
+
 /* Set a style for the "Forgot Password?" text */
 .link {
-  margin: -5px 0 20px 5px;
   color: #a6a6a6;
   cursor: pointer;
 }
@@ -98,6 +101,7 @@ form .txt_field {
 
 /* Set a style for the login button */
 .login_btn {
+  margin: -5px 0 20px 5px;
   width: 100%;
   height: 50px;
   border: 1px solid;
@@ -112,4 +116,20 @@ form .txt_field {
 .login_btn:hover {
   border-color: #2691d9;
   transition: 0.5s;
+}
+
+/* Add style for the Sign Up link in the Login Page */
+.signup_link {
+  margin: 30px 0;
+  text-align: center;
+  font-size: 16px;
+  color: #666666;
+}
+.signup_link a {
+  color: #2691d9;
+  text-decoration: none;
+}
+.signup_link a:hover {
+  color: #2691d9;
+  text-decoration: underline;
 }
