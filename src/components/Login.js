@@ -45,7 +45,14 @@ const Login = () => {
   // Link to the Signup page
   var signup_ = (
     <Link to="/signup" className="link">
-      Sign up here
+      Sign up
+    </Link>
+  );
+
+  // Link to the Forgot Password page
+  var forgotPassword_ = (
+    <Link to="/forgot_password" className="link">
+      Forgot Password?
     </Link>
   );
 
@@ -80,7 +87,9 @@ const Login = () => {
         </div>
         <br />
 
-        <div className="spacing">Are you new? {signup_}</div>
+        <div className="spacing">
+          {forgotPassword_} | Are you new? {signup_}
+        </div>
 
         <button type="submit" className="login_btn">
           Login
