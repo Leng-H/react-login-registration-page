@@ -3,10 +3,13 @@ import React, { useState } from "react";
 import { CognitoUser, AuthenticationDetails } from "amazon-cognito-identity-js";
 import UserPool from "../UserPool";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const history = useHistory("/welcome");
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
@@ -27,6 +30,7 @@ const Login = () => {
       onSuccess: (data) => {
         console.log("onSuccess:", data);
         alert("Login Successfully");
+        history.push("/welcome");
       },
       onFailure: (err) => {
         console.log("onFailure:", err);
