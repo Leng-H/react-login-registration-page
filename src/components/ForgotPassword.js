@@ -43,7 +43,6 @@ const ForgotPassword = () => {
 
     if (newPassword !== confirmNewPassword) {
       alert("Passwords are mismatched");
-      console.error("Passwords are mismatched");
       return;
     }
 
@@ -55,7 +54,7 @@ const ForgotPassword = () => {
       },
       OnFailure: (err) => {
         alert(err);
-        console.error("onFailure: ", err);
+        console.log("onFailure: ", err);
       },
     });
   };
@@ -87,6 +86,8 @@ const ForgotPassword = () => {
         <form onSubmit={resetPassword}>
           <div className="txt_field">
             <input
+              maxLength="6"
+              type="text"
               value={verficationCode}
               onChange={(event) => setVerificationCode(event.target.value)}
             />
@@ -114,6 +115,17 @@ const ForgotPassword = () => {
             />
             <span></span>
             <label>Confirm Password</label>
+          </div>
+          <br />
+
+          <div className="spacing">
+            <div>
+              <li>At least 8 characters</li>
+              <li>Require numbers</li>
+              <li>Require special characters</li>
+              <li>Require uppercase letters</li>
+              <li>Require lowercase letters</li>
+            </div>
           </div>
           <br />
 

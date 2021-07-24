@@ -1,0 +1,21 @@
+{
+  "short_name": "My React Form Sample",
+  "name": "Login & Registration Form Sample",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "stone-diamond.png",
+      "sizes": "128x128",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "stone-diamond(1).png",
+      "sizes": "256x256",
+      "type": "image/x-icon"
+    }
+  ]
+}

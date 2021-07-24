@@ -73,24 +73,31 @@ const Signup = () => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("Passwords are mismatched");
-      console.error("Passwords are mismatched");
+      alert("Passwords are mismatched. Please try agian.");
       return;
     }
 
     // Create new user object
-    UserPool.signUp(email, password, [], null, (err, data) => {
-      if (err) {
-        console.error(err);
-        alert("Please follow the password policy and try agian");
+    try {
+      UserPool.signUp(email, password, [], null, (err, data) => {
+        if (err) {
+          console.error(err);
+          alert("Please follow the password policy and try agian");
+          setFormStage(1);
+        } else {
+          alert("Success. Please verify your email.");
+          setFormStage(2); // Start the Verfication Code Form Stage
+        }
+
+        console.log(data);
+      });
+    } catch (e) {
+      if (e.name === "UsernameExistsException") {
+        alert("User is already registered");
       } else {
-        alert("Success. Please verify your email.");
+        alert(e.message);
       }
-
-      console.log(data);
-    });
-
-    setFormStage(2); // Start the Verfication Code Form Stage
+    }
   };
 
   const onVerifyCodeHandler = (event) => {
@@ -121,21 +128,21 @@ const Signup = () => {
   /**
    * DEBUG
    */
-  const checkPolicyStatus = () => {
-    alert("Calculating Password Policy! Look at the console");
-    console.log(
-      "Length: " +
-        state.passwordLength +
-        "\nContain Num: " +
-        state.containNum +
-        "\nContain Special Char: " +
-        state.containSpecialChar +
-        "\nContain Uppercase: " +
-        state.containUppercase +
-        "\nContain Lowercase: " +
-        state.containLowercase
-    );
-  };
+  // const checkPolicyStatus = () => {
+  //   alert("Calculating Password Policy! Look at the console");
+  //   console.log(
+  //     "Length: " +
+  //       state.passwordLength +
+  //       "\nContain Num: " +
+  //       state.containNum +
+  //       "\nContain Special Char: " +
+  //       state.containSpecialChar +
+  //       "\nContain Uppercase: " +
+  //       state.containUppercase +
+  //       "\nContain Lowercase: " +
+  //       state.containLowercase
+  //   );
+  // };
 
   return (
     <div className="center">
@@ -204,9 +211,9 @@ const Signup = () => {
           </div>
 
           {/* DEBUG */}
-          <button onClick={checkPolicyStatus} className="spacing">
+          {/* <button onClick={checkPolicyStatus} className="spacing">
             DEBUG: Password Policy Status
-          </button>
+          </button> */}
 
           <div className="spacing">Already have an account? {login_}</div>
 
@@ -221,6 +228,8 @@ const Signup = () => {
         <form onSubmit={onVerifyCodeHandler}>
           <div className="txt_field">
             <input
+              maxLength="6"
+              type="text"
               value={verficationCode}
               onChange={(event) => setVerificationCode(event.target.value)}
             />

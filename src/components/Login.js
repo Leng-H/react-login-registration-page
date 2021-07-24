@@ -34,7 +34,7 @@ const Login = () => {
       },
       onFailure: (err) => {
         console.log("onFailure:", err);
-        alert("Something is not right");
+        alert("Incorrect Email or Password.");
       },
       newPasswordRequired: (data) => {
         console.log("newPasswordRequired:", data);

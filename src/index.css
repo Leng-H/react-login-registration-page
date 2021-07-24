@@ -49,6 +49,10 @@ form .txt_field {
   margin: 30px 0;
 }
 
+input:invalid {
+  border: 3px solid red;
+}
+
 .txt_field input {
   width: 100%;
   padding: 0 5px;
